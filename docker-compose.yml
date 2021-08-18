@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  webserver:
+    build: 
+      context: ./bin/centos
+    container_name: 'cenos-webserver'
+    restart: 'always'
+    ports:
+      - "80:80"
+    volumes: 
+      - ./www:/data/www/
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    
