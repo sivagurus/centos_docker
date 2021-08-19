@@ -13,4 +13,6 @@ RUN yum install epel-release -y
 RUN yum update -y
 RUN yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm -y
 RUN yum install ffmpeg ffmpeg-devel -y
-CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
+RUN mkdir /mnt/hls
+RUN ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+CMD ["nginx", "-g", "daemon off;"]
